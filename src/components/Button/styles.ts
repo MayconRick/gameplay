@@ -9,14 +9,14 @@ export const styles = StyleSheet.create({
     backgroundColor: theme.colors.primary,
     borderRadius: 8,
     flexDirection: 'row',
-    alignItems: 'center'
+    alignItems: 'center',
+    fontFamily: theme.fonts.text500,
   },
   title: {
     flex: 1,
     color: theme.colors.heading,
     fontSize: 15,
-    textAlign: 'center',
-    fontFamily: theme.fonts.text500,
+    textAlign: 'center'
   },
   iconWrapper: {
     width: 56,

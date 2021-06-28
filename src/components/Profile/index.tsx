@@ -1,17 +1,44 @@
 import React, { ReactNode } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Alert } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 
 import { styles } from './styles';
 import { Avatar } from '../Avatar';
+import { useAuth } from '../../hooks/auth';
 
 
 export function Profile() {
+
+  function handleSignOut() {
+    Alert.alert('Logout', 'Deseja sair do GamePlay?',
+      [
+        {
+          text: 'Não',
+          style: 'cancel'
+        },
+        {
+          text: 'Sim',
+          onPress: () => signOut()
+        }
+      ]
+    )
+  }
+
+  const { user, signOut } = useAuth();
   return (
     <View style={styles.container}>
 
-      <Avatar
-        urlImage="https://github.com/mayconrick.png"
-      />
+
+
+      <RectButton
+        onPress={handleSignOut}
+      >
+        <Avatar
+          urlImage={user.avatar}
+        />
+      </RectButton>
+
+
 
       <View>
         <View style={styles.user}>
@@ -19,7 +46,7 @@ export function Profile() {
             Olá,
           </Text>
           <Text style={styles.username}>
-            Rodrigo
+            {user.firstName}
           </Text>
         </View>
 
